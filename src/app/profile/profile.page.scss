@@ -1,0 +1,32 @@
+.profile {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.profile ion-avatar {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    background: var(--ion-color-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile ion-icon {
+    font-size: 55px;
+    color: var(--ion-color-primary);
+}
+
+.profile h2 {
+    margin-bottom: 5px;
+}
+
+.profile p {
+    margin-top: 0;
+}
+
+ion-card {
+    border-radius: 18px;
+}

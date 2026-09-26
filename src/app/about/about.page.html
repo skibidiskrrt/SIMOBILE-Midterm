@@ -1,13 +1,25 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>about</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>About</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">about</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <div class="logo">
+    <ion-avatar>
+      <ion-img src="assets/icon/favicon.png"></ion-img>
+    </ion-avatar>
+  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>SIMOBILE</ion-card-title>
+      <ion-card-subtitle>Mobile Cashier Application</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      SIMOBILE is a simple mobile cashier application for managing products, transactions, and sales information.
+    </ion-card-content>
+  </ion-card>
 </ion-content>

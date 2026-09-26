@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeMode} from '../theme-mode'
 
 @Component({
   selector: 'app-settings',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+  constructor(public thememodeservice: ThemeMode) { }
 
   ngOnInit() {
   }
