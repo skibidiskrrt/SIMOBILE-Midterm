@@ -10,6 +10,10 @@ const routes: Routes = [
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardPageModule)
       },
       {
+      path: 'products',
+      loadChildren: () => import('./product/product.module').then(m => m.ProductPageModule)
+      },
+      {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
       }
@@ -27,7 +31,16 @@ const routes: Routes = [
     path: '',
     redirectTo: 'tabs/dashboard',
     pathMatch: 'full'
-  }
+  },
+ /* {
+    path: 'product',
+    loadChildren: () => import('./product/product.module').then( m => m.ProductPageModule)
+  },
+  {
+    path: 'product',
+    loadChildren: () => import('./product/product.module').then( m => m.ProductPageModule)
+  }*/
+
 ];
 
 @NgModule({
