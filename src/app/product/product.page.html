@@ -12,9 +12,8 @@
         <ion-thumbnail slot="start">
           <img [src]="product.image || 'assets/icon/favicon.png'" [alt]="product.name">
         </ion-thumbnail>
-        <ion-label> 
+        <ion-label (click)="viewDetail(product.id)">
           <h2>{{product.name}}</h2>
-
           <p>Sell Price: Rp. {{product.sellingPrice}}</p>
           <p>Stock: {{product.stock}}</p>
         </ion-label>

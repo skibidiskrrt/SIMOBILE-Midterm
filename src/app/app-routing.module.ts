@@ -10,8 +10,8 @@ const routes: Routes = [
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardPageModule)
       },
       {
-      path: 'products',
-      loadChildren: () => import('./product/product.module').then(m => m.ProductPageModule)
+        path: 'products',
+        loadChildren: () => import('./product/product.module').then(m => m.ProductPageModule)
       },
       {
         path: 'profile',
@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
   },
   {
+    path: 'product-form',
+    loadChildren: () => import('./product-form/product-form.module').then(m => m.ProductFormPageModule)
+  },
+  {
     path: 'about',
     loadChildren: () => import('./about/about.module').then(m => m.AboutPageModule)
   },
@@ -32,14 +36,28 @@ const routes: Routes = [
     redirectTo: 'tabs/dashboard',
     pathMatch: 'full'
   },
- /* {
-    path: 'product',
-    loadChildren: () => import('./product/product.module').then( m => m.ProductPageModule)
+  {
+    path: 'product-detail',
+    loadChildren: () => import('./product-detail/product-detail.module').then(m => m.ProductDetailPageModule)
   },
   {
-    path: 'product',
-    loadChildren: () => import('./product/product.module').then( m => m.ProductPageModule)
-  }*/
+    path: 'product-detail/:id',
+    loadChildren: () => import('./product-detail/product-detail.module').then(m => m.ProductDetailPageModule)
+  },
+  {
+    path: 'product-form',
+    loadChildren: () => import('./product-form/product-form.module').then(m => m.ProductFormPageModule)
+  },
+
+
+  /* {
+     path: 'product',
+     loadChildren: () => import('./product/product.module').then( m => m.ProductPageModule)
+   },
+   {
+     path: 'product',
+     loadChildren: () => import('./product/product.module').then( m => m.ProductPageModule)
+   }*/
 
 ];
 

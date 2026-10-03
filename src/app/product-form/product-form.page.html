@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Product Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+    <ion-item>
+      <ion-input label="Product Name" labelPlacement="floating" formControlName="name">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="productForm.get('name')?.touched && productForm.get('name')?.invalid">
+      <p>Name is required</p>
+    </ion-text>
+    <ion-item>
+      <ion-input type="number" label="Purchase Price" labelPlacement="floating" formControlName="purchasePrice">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger"
+      *ngIf="productForm.get('purchasePrice')?.touched && productForm.get('purchasePrice')?.invalid">
+      <p>Purchase price must be greater than 0</p>
+    </ion-text>
+    <ion-item>
+      <ion-input type="number" label="Selling Price" labelPlacement="floating" formControlName="sellingPrice">
+      </ion-input>
+    </ion-item>
+
+    <ion-text color="danger"
+      *ngIf="productForm.get('sellingPrice')?.touched && productForm.get('sellingPrice')?.invalid">
+      <p>Selling price must be greater than 0</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-input type="number" label="Stock" labelPlacement="floating" formControlName="stock">
+      </ion-input>
+    </ion-item>
+
+    <ion-text color="danger" *ngIf="productForm.get('stock')?.touched && productForm.get('stock')?.invalid">
+      <p>Stock cannot be negative</p>
+    </ion-text>
+
+    <ion-button expand="block" type="submit">
+      Save Product
+    </ion-button>
+  </form>
+</ion-content>

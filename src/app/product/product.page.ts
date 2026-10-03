@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductService } from '../services/product-service';
+
 
 @Component({
   selector: 'app-product',
@@ -13,14 +15,17 @@ export class ProductPage implements OnInit {
   filteredProducts: any[] = [];
   searchText: string = '';
 
-  constructor(private productservice: ProductService) { }
+  constructor(
+    private productservice: ProductService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.products = this.productservice.products;
     this.filteredProducts = this.products;
   }
 
-   deleteProduct(id: number) {
+  deleteProduct(id: number) {
     this.productservice.products =
       this.productservice.products.filter(product => product.id !== id);
 
@@ -31,6 +36,14 @@ export class ProductPage implements OnInit {
     this.filteredProducts = this.products.filter(product =>
       product.name.toLowerCase().includes(this.searchText.toLowerCase())
     );
+  }
+
+  viewDetail(id: number) {
+    this.router.navigate(['/product-detail', id]);
+  }
+
+  addToCart(product: any) {
+    console.log('Add to cart:', product);
   }
 
 }
