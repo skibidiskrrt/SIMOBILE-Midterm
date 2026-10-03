@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Product Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="product">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{product.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-thumbnail>
+        <img [src]="product.image || 'assets/icon/favicon.png'" [alt]="product.name">
+      </ion-thumbnail>
+      <p>Stock: {{product.stock}}</p>
+      <p>Purchase Price: Rp. {{product.purchasePrice}}</p>
+      <p>Selling Price: Rp. {{product.sellingPrice}}</p>
+    </ion-card-content>
+    <ion-button [disabled]="product.stock === 0" (click)="addToCart(product)">
+      Add to Cart
+    </ion-button> 
+  </ion-card>
+</ion-content>
