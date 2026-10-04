@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AnimationController, ToastController } from '@ionic/angular/lazy';
 import { ProductService } from '../services/product-service';
+import { CartService } from '../services/cart-service';
 
 
 @Component({
@@ -17,8 +19,17 @@ export class ProductPage implements OnInit {
 
   constructor(
     private productservice: ProductService,
-    private router: Router
+    private router: Router,
+    public cartservice: CartService,
+    private animationCtrl: AnimationController,
+    private toastCtrl: ToastController,
+    private cdr: ChangeDetectorRef
   ) { }
+
+  // the app has no zone.js, so a re-entered (cached) page must refresh itself
+  ionViewWillEnter() {
+    this.cdr.detectChanges();
+  }
 
   ngOnInit() {
     this.products = this.productservice.products;
@@ -42,8 +53,34 @@ export class ProductPage implements OnInit {
     this.router.navigate(['/product-detail', id]);
   }
 
-  addToCart(product: any) {
-    console.log('Add to cart:', product);
+  async addToCart(product: any) {
+    if (this.cartservice.add(product)) {
+      // feedback animation: the cart button pops
+      const cartButton = document.querySelector('#cartButton') as HTMLElement;
+      this.animationCtrl
+        .create()
+        .addElement(cartButton)
+        .duration(600)
+        .keyframes([
+          { offset: 0, transform: 'scale(1)' },
+          { offset: 0.5, transform: 'scale(1.8)' },
+          { offset: 1, transform: 'scale(1)' },
+        ])
+        .play();
+      this.showToast(product.name + ' added to cart', true);
+    } else {
+      this.showToast('No more stock for ' + product.name, false);
+    }
+  }
+
+  async showToast(message: string, withCartButton: boolean) {
+    const toast = await this.toastCtrl.create({
+      message: message,
+      duration: 1500,
+      position: 'bottom',
+      buttons: withCartButton ? [{ text: 'View Cart', handler: () => { this.router.navigate(['/cart']); } }] : []
+    });
+    await toast.present();
   }
 
 }
