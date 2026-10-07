@@ -25,6 +25,7 @@ export class ProductFormPage implements OnInit {
 
     this.productForm = this.fb.group({
       name: ['', Validators.required],
+      category: ['', Validators.required],
       purchasePrice: [0, [Validators.required, Validators.min(1)]],
       sellingPrice: [0, [Validators.required, Validators.min(1)]],
       stock: [0, [Validators.required, Validators.min(0)]],
@@ -43,6 +44,7 @@ export class ProductFormPage implements OnInit {
       if (product) {
         this.productForm.patchValue({
           name: product.name,
+          category: product.category,
           purchasePrice: product.purchasePrice,
           sellingPrice: product.sellingPrice,
           stock: product.stock,
@@ -70,6 +72,7 @@ export class ProductFormPage implements OnInit {
       if (product) {
         id: this.productservice.products.length + 1;
         product.name = data.name;
+        product.category = data.category;
         product.purchasePrice = data.purchasePrice;
         product.sellingPrice = data.sellingPrice;
         product.stock = data.stock;
@@ -81,6 +84,7 @@ export class ProductFormPage implements OnInit {
       const newProduct = {
         id: this.productservice.products.length + 1,
         name: data.name,
+        category: data.category,
         purchasePrice: data.purchasePrice,
         sellingPrice: data.sellingPrice,
         stock: data.stock,

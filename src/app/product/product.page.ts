@@ -16,6 +16,8 @@ export class ProductPage implements OnInit {
   products: any[] = [];
   filteredProducts: any[] = [];
   searchText: string = '';
+  selectedCategory: string = '';
+  categories: string[] = ['Food', 'Drink', 'Snack', 'Grocery', 'Personal Care'];
 
   constructor(
     private productservice: ProductService,
@@ -34,6 +36,9 @@ export class ProductPage implements OnInit {
   ngOnInit() {
     this.products = this.productservice.products;
     this.filteredProducts = this.products;
+    this.categories = Array.from(
+      new Set(this.products.map(product => product.category))
+    );
   }
 
   deleteProduct(id: number) {
@@ -44,9 +49,21 @@ export class ProductPage implements OnInit {
   }
 
   searchProducts() {
-    this.filteredProducts = this.products.filter(product =>
-      product.name.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+    this.filteredProducts = [];
+
+    for (const product of this.products) {
+      const nameMatches = product.name
+        .toLowerCase()
+        .includes(this.searchText.toLowerCase());
+
+      const categoryMatches =
+        this.selectedCategory === '' ||
+        product.category === this.selectedCategory;
+
+      if (nameMatches && categoryMatches) {
+        this.filteredProducts.push(product);
+      }
+    }
   }
 
   viewDetail(id: number) {

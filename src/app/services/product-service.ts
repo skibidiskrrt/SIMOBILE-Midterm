@@ -6,6 +6,7 @@ export class ProductService {
         {
   id: 1,
   name: 'Indomie Goreng',
+  category: 'Food',
   purchasePrice: 2500,
   sellingPrice: 3500,
   stock: 20,
@@ -14,6 +15,7 @@ export class ProductService {
 {
   id: 2,
   name: 'Indomie Soto',
+  category: 'Food',
   purchasePrice: 2500,
   sellingPrice: 3500,
   stock: 15,
@@ -22,6 +24,7 @@ export class ProductService {
 {
   id: 3,
   name: 'Prestine 600ml',
+  category: 'Drink',
   purchasePrice: 2000,
   sellingPrice: 3000,
   stock: 30,
@@ -30,6 +33,7 @@ export class ProductService {
 {
   id: 4,
   name: 'Teh Kotak',
+  category: 'Drink',
   purchasePrice: 2500,
   sellingPrice: 5000,
   stock: 25,
@@ -38,6 +42,7 @@ export class ProductService {
 {
   id: 5,
   name: 'Beng-Beng',
+  category: 'Snack',
   purchasePrice: 1500,
   sellingPrice: 2500,
   stock: 18,
@@ -46,6 +51,7 @@ export class ProductService {
 {
   id: 6,
   name: 'Chitato Lite Seaweed',
+  category: 'Snack',
   purchasePrice: 7000,
   sellingPrice: 9000,
   stock: 12,
@@ -54,6 +60,7 @@ export class ProductService {
 {
   id: 7,
   name: 'Gulaku kuning 1kg',
+  category: 'Grocery',
   purchasePrice: 15000,
   sellingPrice: 18000,
   stock: 10,
@@ -62,6 +69,7 @@ export class ProductService {
 {
   id: 8,
   name: 'Minyak Goreng 1L',
+  category: 'Grocery',
   purchasePrice: 16000,
   sellingPrice: 19000,
   stock: 8,
@@ -70,6 +78,7 @@ export class ProductService {
 {
   id: 9,
   name: 'Susu Ultra Milk',
+  category: 'Drink',
   purchasePrice: 5000,
   sellingPrice: 7000,
   stock: 14,
@@ -78,6 +87,7 @@ export class ProductService {
 {
   id: 10,
   name: 'Minyak Telon My Baby 60 ml',
+  category: 'Personal Care',
   purchasePrice: 15000,
   sellingPrice: 19000,
   stock: 16,

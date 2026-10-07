@@ -16,6 +16,14 @@
 
 <ion-content>
   <ion-searchbar [(ngModel)]="searchText" (ionInput)="searchProducts()" placeholder="Search Product"></ion-searchbar>
+  <ion-item>
+    <ion-select label="Category" [(ngModel)]="selectedCategory" (ionChange)="searchProducts()">
+      <ion-select-option value="">All Categories</ion-select-option>
+      <ion-select-option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
   <ion-list>
     <ion-item-sliding *ngFor="let product of filteredProducts">
       <ion-item>
@@ -24,6 +32,7 @@
         </ion-thumbnail>
         <ion-label (click)="viewDetail(product.id)">
           <h2>{{product.name}}</h2>
+          <p>Category: {{ product.category }}</p>
           <p>Sell Price: Rp. {{product.sellingPrice}}</p>
           <p>Stock: {{product.stock}}</p>
         </ion-label>
@@ -32,7 +41,6 @@
           <ion-icon name="cart" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-item>
-
       <ion-item-options side="end">
         <ion-item-option color="danger" (click)="deleteProduct(product.id)">
           Delete
