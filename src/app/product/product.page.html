@@ -4,8 +4,11 @@
     <ion-buttons slot="end">
       <ion-button routerLink="/product-form">Add</ion-button>
       <ion-button id="cartButton" routerLink="/cart">
-        <ion-icon name="cart" slot="icon-only"></ion-icon>
-        <ion-badge color="danger" *ngIf="cartservice.getCount() > 0">{{cartservice.getCount()}}</ion-badge>
+        <div class="cart-wrapper">
+          <ion-icon name="cart"></ion-icon>
+          <ion-badge class="cart-badge" color="danger"
+            *ngIf="cartservice.getCount() > 0">{{cartservice.getCount()}}</ion-badge>
+        </div>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
