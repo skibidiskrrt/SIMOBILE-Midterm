@@ -16,12 +16,10 @@ The application helps manage products, cart items, stock, checkout, and transact
 ## Technologies
 
 - Ionic Angular
-- Angular 22
-- Ionic 9
-- Capacitor 8
 - TypeScript
+- HTML
 - SCSS
-- Ionicons
+- Capacitor
 
 ## Implemented Features
 
