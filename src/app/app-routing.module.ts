@@ -13,10 +13,6 @@ const routes: Routes = [
       path: 'products',
       loadChildren: () => import('./product/product.module').then(m => m.ProductPageModule)
       },
-      /*{//untuk tab transaksi
-      path: 'transaction',
-      loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionPageModule)
-      },*/
       {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
