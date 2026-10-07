@@ -14,10 +14,22 @@ const routes: Routes = [
         loadChildren: () => import('./product/product.module').then(m => m.ProductPageModule)
       },
       {
+        path: 'transactions',
+        loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionPageModule)
+      },
+      {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
       }
     ]
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then(m => m.CartPageModule)
+  },
+  {
+    path: 'transaction-detail/:id',
+    loadChildren: () => import('./transaction-detail/transaction-detail.module').then(m => m.TransactionDetailPageModule)
   },
   {
     path: 'settings',

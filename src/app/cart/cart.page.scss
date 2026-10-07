@@ -1,0 +1,31 @@
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.total {
+  margin: 8px 0;
+}
+
+// full-screen layer shown only while the checkout animation plays
+#successOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  z-index: 100;
+}
+
+#successIcon {
+  font-size: 120px;
+  color: #2dd36f;
+}

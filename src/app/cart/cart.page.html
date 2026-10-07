@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/products"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of cartservice.items">
+      <ion-thumbnail slot="start">
+        <img [src]="item.product.image || 'assets/icon/favicon.png'" [alt]="item.product.name">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{item.product.name}}</h2>
+        <p>Rp. {{item.product.sellingPrice}} x {{item.qty}} = Rp. {{item.product.sellingPrice * item.qty}}</p>
+        <div class="qty">
+          <ion-button size="small" (click)="cartservice.decrease(item)">-</ion-button>
+          <span>{{item.qty}}</span>
+          <ion-button size="small" [disabled]="item.qty >= item.product.stock" (click)="cartservice.increase(item)">+</ion-button>
+          <ion-button size="small" color="danger" (click)="cartservice.remove(item)">
+            <ion-icon name="trash" slot="icon-only"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-text-center ion-padding" *ngIf="cartservice.items.length === 0">
+    <p>Your cart is empty.</p>
+    <ion-button routerLink="/tabs/products">Browse Products</ion-button>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-padding-horizontal">
+      <h3 class="total">Total: Rp. {{cartservice.getTotal()}}</h3>
+      <ion-button expand="block" color="success" [disabled]="cartservice.items.length === 0" (click)="confirmTransaction()">
+        Confirm Transaction
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
+  <div id="successOverlay">
+    <ion-icon id="successIcon" name="checkmark-circle"></ion-icon>
+    <h2>Transaction Successful</h2>
+  </div>
