@@ -27,7 +27,8 @@ export class ProductFormPage implements OnInit {
       name: ['', Validators.required],
       purchasePrice: [0, [Validators.required, Validators.min(1)]],
       sellingPrice: [0, [Validators.required, Validators.min(1)]],
-      stock: [0, [Validators.required, Validators.min(0)]]
+      stock: [0, [Validators.required, Validators.min(0)]],
+      image: ['']
     });
 
     const id = this.route.snapshot.paramMap.get('id');
@@ -44,7 +45,8 @@ export class ProductFormPage implements OnInit {
           name: product.name,
           purchasePrice: product.purchasePrice,
           sellingPrice: product.sellingPrice,
-          stock: product.stock
+          stock: product.stock,
+          image: product.image
         });
       }
     }
@@ -66,10 +68,12 @@ export class ProductFormPage implements OnInit {
       );
 
       if (product) {
+        id: this.productservice.products.length + 1;
         product.name = data.name;
         product.purchasePrice = data.purchasePrice;
         product.sellingPrice = data.sellingPrice;
         product.stock = data.stock;
+        product.image = data.image;
       }
 
     } else {

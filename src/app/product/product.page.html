@@ -2,6 +2,7 @@
   <ion-toolbar color="primary">
     <ion-title>Products</ion-title>
     <ion-buttons slot="end">
+      <ion-button routerLink="/product-form">Add</ion-button>
       <ion-button id="cartButton" routerLink="/cart">
         <ion-icon name="cart" slot="icon-only"></ion-icon>
         <ion-badge color="danger" *ngIf="cartservice.getCount() > 0">{{cartservice.getCount()}}</ion-badge>
@@ -23,6 +24,7 @@
           <p>Sell Price: Rp. {{product.sellingPrice}}</p>
           <p>Stock: {{product.stock}}</p>
         </ion-label>
+        <ion-button slot="end" [routerLink]="['/product-form', product.id]">Edit</ion-button>
         <ion-button slot="end" fill="clear" [disabled]="product.stock === 0" (click)="addToCart(product)">
           <ion-icon name="cart" slot="icon-only"></ion-icon>
         </ion-button>
